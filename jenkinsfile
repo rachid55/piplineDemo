@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Builde') {
+            steps {
+               build quietPeriod: 5, job: 'premier_job'
+            }
+        }
+        stage('deploye') {
+            steps {
+               build quietPeriod: 5, job: 'devJob'
+            }
+        }
+        stage('relese') {
+            steps {
+               build quietPeriod: 5, job: 'testerjob'
+            }
+        }
+    }
